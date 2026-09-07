@@ -45,6 +45,11 @@
         margin-top: 1.75rem;
       }
 
+      h4 {
+        margin: 1.5rem 0 0.25rem;
+        font-size: 0.95rem;
+      }
+
       .lecture-header {
         border-bottom: 1px solid #ddd;
         padding-bottom: 1.5rem;
@@ -477,8 +482,8 @@
       <h2>Section 1 — Executive Summary</h2>
       <p>
         The essentials — the bare minimum you need to know for today, not a
-        highlights reel of the lecture. If you can't do one of these yet,
-        that's what you go back and redo before calling today done:
+        highlights reel of the lecture. If you can't do one of these yet, that's
+        what you go back and redo before calling today done:
       </p>
       <ul>
         <li>
@@ -493,11 +498,12 @@
           Know and correctly use the most common elements:
           <code>div</code>, <code>span</code>, <code>input</code>,
           <code>button</code>, <code>form</code>,
-          <code>ul</code>/<code>li</code>, <code>table</code>,
-          <code>img</code>.
+          <code>ul</code>/<code>li</code>, <code>table</code>, <code>img</code>.
         </li>
         <li>Select elements in CSS using id, class, and element selectors.</li>
-        <li>Explain and apply the box model: margin, border, padding, content.</li>
+        <li>
+          Explain and apply the box model: margin, border, padding, content.
+        </li>
         <li>Build a layout using flexbox.</li>
         <li>Explain the purpose of a media query for responsive design.</li>
         <li>
@@ -506,7 +512,8 @@
         </li>
       </ul>
       <p>
-        Want more? <a href="/src/day1-html-css-dom/concepts.html">View all concepts?</a>
+        Want more?
+        <a href="/src/day1-html-css-dom/concepts.html">View all concepts?</a>
       </p>
     </section>
 
@@ -522,8 +529,7 @@
       <ul>
         <li>
           <strong>HTML</strong> = structure/content, <strong>CSS</strong> =
-          presentation, <strong>JavaScript</strong> = behavior (starts Day
-          2+).
+          presentation, <strong>JavaScript</strong> = behavior (starts Day 2+).
         </li>
         <li>
           Open Chrome DevTools: right-click → <em>Inspect</em>, or
@@ -555,8 +561,13 @@
         typing on.
       </p>
 
-      <h3>2.3 Semantic vs. generic containers</h3>
-      <p>Prefer a semantic tag over a generic box when one fits the content's role:</p>
+      <h3>2.3 Common elements &amp; semantic containers</h3>
+      <p>
+        Prefer a semantic tag over a generic box when one fits the content's
+        role:
+      </p>
+
+      <h4>Most common</h4>
       <table class="ref-table">
         <thead>
           <tr>
@@ -569,52 +580,113 @@
           <tr class="generic-row">
             <td><code>&lt;div&gt;</code></td>
             <td><span class="badge badge-generic">Generic</span></td>
-            <td>block box, no meaning</td>
+            <td>block box, no meaning — the default wrapper</td>
           </tr>
           <tr class="generic-row">
             <td><code>&lt;span&gt;</code></td>
             <td><span class="badge badge-generic">Generic</span></td>
-            <td>inline box, no meaning</td>
+            <td>inline box, no meaning — wraps part of a line</td>
           </tr>
           <tr>
-            <td><code>&lt;header&gt;</code></td>
+            <td><code>&lt;p&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>intro / top-of-section content</td>
+            <td>a paragraph of text</td>
           </tr>
           <tr>
-            <td><code>&lt;nav&gt;</code></td>
+            <td><code>&lt;a href="…"&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>navigation links</td>
+            <td>a link to another page, file, or section</td>
           </tr>
           <tr>
-            <td><code>&lt;main&gt;</code></td>
+            <td><code>&lt;img src="…" alt="…"&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>the primary content of the page (one per page)</td>
+            <td>an image — <code>alt</code> is required</td>
           </tr>
           <tr>
-            <td><code>&lt;section&gt;</code></td>
+            <td><code>&lt;h1&gt;–&lt;h6&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>a thematic grouping with its own heading</td>
+            <td>headings, in order — one <code>&lt;h1&gt;</code> per page</td>
           </tr>
           <tr>
-            <td><code>&lt;article&gt;</code></td>
+            <td><code>&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>self-contained, independently distributable content</td>
+            <td>a bulleted or numbered list, and its items</td>
           </tr>
           <tr>
-            <td><code>&lt;aside&gt;</code></td>
+            <td><code>&lt;table&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>tangential content (sidebar, pull-quote)</td>
+            <td>
+              tabular data — with <code>&lt;thead&gt;</code>,
+              <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>,
+              <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>
+            </td>
           </tr>
           <tr>
-            <td><code>&lt;footer&gt;</code></td>
+            <td><code>&lt;form&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
-            <td>closing content for a section/page</td>
+            <td>a group of fields submitted together</td>
+          </tr>
+          <tr>
+            <td><code>&lt;label for="…"&gt;</code></td>
+            <td><span class="badge badge-semantic">Semantic</span></td>
+            <td>the caption for a field — clicking it focuses that field</td>
+          </tr>
+          <tr>
+            <td><code>&lt;input&gt;</code></td>
+            <td><span class="badge badge-semantic">Semantic</span></td>
+            <td>
+              a form field — self-closing, never
+              <code>&lt;input&gt;&lt;/input&gt;</code>
+            </td>
           </tr>
           <tr>
             <td><code>&lt;button&gt;</code></td>
             <td><span class="badge badge-semantic">Semantic</span></td>
             <td>a clickable action (not a styled <code>&lt;div&gt;</code>!)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Other semantic elements</h4>
+      <p>
+        Page-structure landmarks — they render like a <code>&lt;div&gt;</code>,
+        but they say what the box <em>is</em>:
+      </p>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;header&gt;</code></td>
+            <td>intro / top-of-section content</td>
+          </tr>
+          <tr>
+            <td><code>&lt;nav&gt;</code></td>
+            <td>navigation links</td>
+          </tr>
+          <tr>
+            <td><code>&lt;main&gt;</code></td>
+            <td>the primary content of the page (one per page)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;section&gt;</code></td>
+            <td>a thematic grouping with its own heading</td>
+          </tr>
+          <tr>
+            <td><code>&lt;article&gt;</code></td>
+            <td>self-contained, independently distributable content</td>
+          </tr>
+          <tr>
+            <td><code>&lt;aside&gt;</code></td>
+            <td>tangential content (sidebar, pull-quote)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;footer&gt;</code></td>
+            <td>closing content for a section/page</td>
           </tr>
         </tbody>
       </table>
@@ -625,9 +697,9 @@
 
       <h3>2.4 Text &amp; inline elements</h3>
       <p>
-        Headings <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>,
-        <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>,
-        <code>&lt;a href="…"&gt;</code>, <code>&lt;img src="…" alt="…"&gt;</code>.
+        Inline emphasis: <code>&lt;strong&gt;</code> (importance),
+        <code>&lt;em&gt;</code> (stress), <code>&lt;br&gt;</code> (a line
+        break).
       </p>
       <p class="callout">
         <code>alt</code> is not optional — it's the text a screen reader speaks.
@@ -689,9 +761,9 @@
 
       <h3>2.6 Forms</h3>
       <p class="callout">
-        <code>&lt;input&gt;</code> is self-closing — <code>&lt;input /&gt;</code>
-        or plain <code>&lt;input&gt;</code>, <strong>never</strong>
-        <code>&lt;input&gt;&lt;/input&gt;</code>.
+        <code>&lt;input&gt;</code> is self-closing —
+        <code>&lt;input /&gt;</code> or plain <code>&lt;input&gt;</code>,
+        <strong>never</strong> <code>&lt;input&gt;&lt;/input&gt;</code>.
       </p>
       <div class="code-demo-pair">
         <form class="demo-form">
@@ -735,8 +807,8 @@
 <span class="tok-tag">&lt;/form&gt;</span></code></pre>
       </div>
       <p class="callout">
-        A form's default behavior on submit is to reload the page (a GET to
-        the current URL). In JS you'll almost always call
+        A form's default behavior on submit is to reload the page (a GET to the
+        current URL). In JS you'll almost always call
         <code>event.preventDefault()</code> inside a <code>submit</code>
         handler to stop that refresh.
       </p>
@@ -755,7 +827,9 @@
       <div class="concept">
         <p class="concept-label">Concept</p>
         <ul>
-          <li>More specific selector wins — regardless of order in the file.</li>
+          <li>
+            More specific selector wins — regardless of order in the file.
+          </li>
           <li>Tie? Last rule declared wins.</li>
           <li><code>!important</code> beats everything — avoid it.</li>
         </ul>
@@ -830,8 +904,8 @@
         <ul>
           <li><code>display: flex</code> lays children out along ONE axis.</li>
           <li>
-            <code>justify-content</code> = main axis,
-            <code>align-items</code> = cross axis.
+            <code>justify-content</code> = main axis, <code>align-items</code> =
+            cross axis.
           </li>
         </ul>
       </div>
@@ -847,10 +921,13 @@
         <ul>
           <li>Flex = one axis (a row OR a column).</li>
           <li>
-            Grid = two axes at once (rows AND columns) — better for a
-            full-page or card-grid layout.
+            Grid = two axes at once (rows AND columns) — better for a full-page
+            or card-grid layout.
           </li>
-          <li>Surface level for today: just know it exists. "Grid = 2D, flex = 1D."</li>
+          <li>
+            Surface level for today: just know it exists. "Grid = 2D, flex =
+            1D."
+          </li>
         </ul>
       </div>
       <div class="grid-demo">
@@ -886,12 +963,14 @@
         <p class="concept-label">Concept</p>
         <ul>
           <li>
-            A <strong>media query</strong> applies different CSS rules based
-            on the viewport (usually its width).
+            A <strong>media query</strong> applies different CSS rules based on
+            the viewport (usually its width).
           </li>
           <li>
-            Resize this window, or open DevTools' device toolbar
-            (<code>Cmd+Shift+M</code> Mac / <code>Ctrl+Shift+M</code>
+            Resize this window, or open DevTools' device toolbar (<code
+              >Cmd+Shift+M</code
+            >
+            Mac / <code>Ctrl+Shift+M</code>
             Windows), to flip the box below at the 600px breakpoint — no JS
             involved:
           </li>
@@ -904,8 +983,12 @@
   <span class="tok-tag">.narrow-only</span> { <span class="tok-attr">display</span>: <span class="tok-string">block</span>; }
 }</code></pre>
       <div class="responsive-demo">
-        <p class="wide-only">Viewport ≥ 600px — showing the wide-layout text.</p>
-        <p class="narrow-only">Viewport &lt; 600px — showing the narrow-layout text.</p>
+        <p class="wide-only">
+          Viewport ≥ 600px — showing the wide-layout text.
+        </p>
+        <p class="narrow-only">
+          Viewport &lt; 600px — showing the narrow-layout text.
+        </p>
       </div>
     </section>
 
@@ -938,7 +1021,9 @@
       </div>
 
       <h3>4.1 Sneak peek: touching the DOM in JavaScript (Day 2+)</h3>
-      <p>Surface level only, nothing here runs today — just know these exist:</p>
+      <p>
+        Surface level only, nothing here runs today — just know these exist:
+      </p>
       <pre><code><span class="tok-comment">// SELECT an element</span>
 document.<span class="tok-attr">querySelector</span>(<span class="tok-string">".card"</span>);        <span class="tok-comment">// first match, any CSS selector</span>
 document.<span class="tok-attr">querySelectorAll</span>(<span class="tok-string">"li"</span>);        <span class="tok-comment">// ALL matches, as a list</span>
