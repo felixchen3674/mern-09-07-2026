@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2 Practice</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 6rem;
+        line-height: 1.6;
+        color: #1c1c1c;
+      }
+      h1 {
+        font-size: 1.4rem;
+        border-bottom: 3px solid #222;
+        padding-bottom: 0.3rem;
+      }
+      .home-nav {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+      }
+      .home-nav a {
+        color: #2255cc;
+      }
+      .intro {
+        color: #444;
+        margin-bottom: 2rem;
+      }
+      .callout {
+        background: #fff7e0;
+        border-left: 4px solid #e8b400;
+        padding: 0.9rem 1.1rem;
+        margin: 0 0 2rem;
+        border-radius: 4px;
+      }
+      code {
+        background: #f2f2f2;
+        padding: 0.1rem 0.35rem;
+        border-radius: 3px;
+        font-size: 0.92em;
+      }
+      pre {
+        background: #1c1c1c;
+        color: #d4d4d4;
+        padding: 0.7rem 0.9rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        margin: 0.6rem 0 0;
+        font-size: 0.85rem;
+      }
+      pre code,
+      pre code.hljs {
+        background: none;
+        color: #d4d4d4;
+        padding: 0;
+      }
+      /* VS Code Dark+ palette, layered over highlight.js's shipped vs2015 base.
+         vs2015 already matches Dark+ on keyword/type/attr/name/literal; these are
+         the tokens where it differs — most visibly function names (gray -> yellow)
+         and comments, whose default green was too dim on #1c1c1c. */
+      .hljs-comment,
+      .hljs-quote,
+      .hljs-doctag {
+        color: #6a9955;
+      }
+      .hljs-string,
+      .hljs-meta .hljs-string {
+        color: #ce9178;
+      }
+      .hljs-number {
+        color: #b5cea8;
+      }
+      .hljs-title,
+      .hljs-function,
+      .hljs-title.function_ {
+        color: #dcdcaa;
+      }
+      .hljs-title.class_,
+      .hljs-class {
+        color: #4ec9b0;
+      }
+      .hljs-variable,
+      .hljs-variable.language_,
+      .hljs-template-variable,
+      .hljs-property,
+      .hljs-params {
+        color: #9cdcfe;
+      }
+      .hljs-tag {
+        color: #808080;
+      }
+      .hljs-subst,
+      .hljs-formula {
+        color: #d4d4d4;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #d16969;
+      }
+      .hljs-meta {
+        color: #569cd6;
+      }
+      .tag-expected {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #4caf50;
+        margin-top: 0.6rem;
+      }
+      .tag-starter,
+      .tag-examples {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #2255cc;
+      }
+      .tag-challenge {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #b45309;
+      }
+
+      .section-label {
+        margin: 2.5rem 0 0.25rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 0.3rem;
+      }
+      .section-note {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0.3rem 0 1.25rem;
+      }
+      .task-list {
+        margin: 0.4rem 0 0;
+        padding-left: 1.2rem;
+      }
+      .task-list li {
+        margin-bottom: 0.35rem;
+      }
+
+      /* task cards */
+      .task {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        border: 1px solid #e4e4e4;
+        border-radius: 10px;
+        padding: 1.1rem 1.25rem;
+        margin-bottom: 1.25rem;
+        background: #fff;
+      }
+      .task-num {
+        flex-shrink: 0;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        background: #2255cc;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .task-body {
+        flex: 1 1 260px;
+      }
+      .task-body p {
+        margin: 0;
+      }
+      .challenge {
+        border-color: #f0d5ad;
+        background: #fffaf0;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="home-nav">
+      <a href="/">← Week 1 Home</a>
+      ·
+      <a href="./lecture.html">Lecture</a>
+      ·
+      <a href="./notes.html">Notes</a>
+      ·
+      <strong>Practice</strong>
+      ·
+      <a href="./concepts.html">Concepts</a>
+      ·
+      <a href="./lab.html">Lab</a>
+    </p>
+    <h1>Day 2 — Practice</h1>
+    <p class="intro">
+      Everything on this page is required, including the two challenges at the end — bring it to the
+      6pm lab.
+    </p>
+    <p class="callout">
+      Work through these during the gap between lecture and lab. Use <code>notes.html</code> as your
+      reference if you get stuck on syntax.
+    </p>
+
+    <div class="task">
+      <span class="task-num">1</span>
+      <div class="task-body">
+        <p>Be able to declare explicitly-typed variables, and recognize when TS infers a type on its own.</p>
+        <span class="tag-examples">Examples</span>
+        <pre><code class="language-typescript">name, age, isActive, scores // declare these with explicit types (string, number, boolean, number[])
+someValue // declare with no annotation — hover to confirm what TS inferred</code></pre>
+      </div>
+    </div>
+
+    <div class="task">
+      <span class="task-num">2</span>
+      <div class="task-body">
+        <p>Be able to type a function's parameters and return value.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">function add(a, b) {
+  return a + b;
+}
+function formatName(first, last) {
+  return first + " " + last;
+}</code></pre>
+        <span class="tag-examples">Examples</span>
+        <pre><code class="language-typescript">add(a, b) // add param types and a return type — both are numbers
+formatName(first, last) // add param types and a return type — both are strings</code></pre>
+      </div>
+    </div>
+
+    <div class="task">
+      <span class="task-num">3</span>
+      <div class="task-body">
+        <p>Be able to define an interface with an optional property.</p>
+        <span class="tag-examples">Examples</span>
+        <pre><code class="language-typescript">interface UserProfile { ... } // define it: id (number), name (string), optional email (string)
+student1 // create an object satisfying it, without email</code></pre>
+      </div>
+    </div>
+
+    <div class="task">
+      <span class="task-num">4</span>
+      <div class="task-body">
+        <p>Be able to define an interface with an array property.</p>
+        <span class="tag-starter">Starter — pick one, or invent your own</span>
+        <pre><code class="language-typescript">interface Playlist { name: string; songs: string[]; }
+interface Classroom { teacher: string; studentIds: number[]; }</code></pre>
+        <span class="tag-examples">Examples</span>
+        <pre><code class="language-typescript">interface Playlist { ... } // 1. define it — pick one above, or write your own
+playlist.songs // 2. create an object satisfying it, read the array back</code></pre>
+      </div>
+    </div>
+
+    <div class="task">
+      <span class="task-num">5</span>
+      <div class="task-body">
+        <p>Be able to define a union type and use it in a function.</p>
+        <span class="tag-examples">Examples</span>
+        <pre><code class="language-typescript">type OrderStatus = ... // 1. define it: a status is "pending", "shipped", or "delivered"
+describeStatus(status) // 2. write a function that returns a different message per case</code></pre>
+      </div>
+    </div>
+
+    <p class="section-label">Put it all together</p>
+    <p class="section-note">
+      Two scenarios, each combining several of today's tools into one realistic problem — this is
+      the real test of whether it clicked.
+    </p>
+
+    <div class="task challenge">
+      <span class="task-num">6</span>
+      <div class="task-body">
+        <p>Product catalog — total up the store.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">const sampleProduct = {
+  id: 1,
+  name: "Wireless Mouse",
+  price: 25,
+  tags: ["electronics", "sale"],
+  discount: 5,
+};</code></pre>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Based on <code>sampleProduct</code>'s shape, define an <code>interface Product</code> yourself — <code>discount</code> should be optional (not every product has one).</li>
+          <li>Create an array of 2–3 <code>Product</code> objects, typed as <code>Product[]</code> — give at least one a <code>discount</code>, leave it off another.</li>
+          <li>Write <code>getTotalPrice(products: Product[]): number</code> — sum <code>price</code>, subtracting <code>discount</code> when a product has one.</li>
+          <li>Call it and log the result.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">getTotalPrice(products) // the store's total, discounts applied</code></pre>
+      </div>
+    </div>
+
+    <div class="task challenge">
+      <span class="task-num">7</span>
+      <div class="task-body">
+        <p>User directory — count by role.</p>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Define a union <code>type Role</code> that can only be <code>"admin"</code>, <code>"editor"</code>, or <code>"viewer"</code>.</li>
+          <li>Define an <code>interface UserProfile</code> with: <code>username</code> (string), <code>role</code> (type <code>Role</code>), <code>permissions</code> (an array of strings), and an optional <code>bio</code> (string).</li>
+          <li>Create an array of 3+ <code>UserProfile</code> objects, typed as <code>UserProfile[]</code>.</li>
+          <li>Write <code>countByRole(users: UserProfile[], role: Role): number</code> — returns how many users have that role.</li>
+          <li>Call it for one role and log the result.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">countByRole(users, "admin") // however many admins are in your array</code></pre>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      // highlight.js replaces each block's innerHTML, so the ✓/✗ line markers are
+      // re-applied afterwards from the block's data-mark attribute ("g1,b3,b4").
+      function splitHighlightedLines(html) {
+        const lines = [], open = [];
+        let current = "", i = 0;
+        while (i < html.length) {
+          const ch = html[i];
+          if (ch === "<") {
+            const end = html.indexOf(">", i);
+            const tag = html.slice(i, end + 1);
+            if (tag.startsWith("</")) open.pop();
+            else open.push(tag);
+            current += tag;
+            i = end + 1;
+          } else if (ch === "\n") {
+            lines.push(current + "</span>".repeat(open.length));
+            current = open.join("");
+            i += 1;
+          } else {
+            current += ch;
+            i += 1;
+          }
+        }
+        lines.push(current);
+        return lines;
+      }
+
+      document.querySelectorAll("pre code").forEach(function (el) {
+        hljs.highlightElement(el);
+        const mark = el.dataset.mark;
+        if (!mark) return;
+        const cls = {};
+        mark.split(",").forEach(function (m) {
+          cls[Number(m.slice(1))] = m[0] === "g" ? "line-good" : "line-bad";
+        });
+        el.innerHTML = splitHighlightedLines(el.innerHTML)
+          .map(function (line, i) {
+            return cls[i + 1] ? '<span class="' + cls[i + 1] + '">' + line + "</span>" : line;
+          })
+          .join("\n");
+      });
+    </script>
+  </body>
+</html>
