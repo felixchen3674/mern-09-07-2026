@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 3 Lab</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css"
+    />
+    <style>
+      .home-nav {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+      }
+      .home-nav a {
+        color: #2255cc;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 6rem;
+        line-height: 1.6;
+        color: #1c1c1c;
+      }
+      h1 {
+        font-size: 1.4rem;
+        border-bottom: 3px solid #222;
+        padding-bottom: 0.3rem;
+      }
+      code {
+        background: #f2f2f2;
+        padding: 0.1rem 0.35rem;
+        border-radius: 3px;
+        font-size: 0.92em;
+      }
+      pre {
+        background: #1c1c1c;
+        color: #d4d4d4;
+        padding: 0.7rem 0.9rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        margin: 0.6rem 0 0;
+        font-size: 0.85rem;
+      }
+      pre code,
+      pre code.hljs {
+        background: none;
+        color: #d4d4d4;
+        padding: 0;
+      }
+      /* VS Code Dark+ palette, layered over highlight.js's shipped vs2015 base.
+         vs2015 already matches Dark+ on keyword/type/attr/name/literal; these are
+         the tokens where it differs — most visibly function names (gray -> yellow)
+         and comments, whose default green was too dim on #1c1c1c. */
+      .hljs-comment,
+      .hljs-quote,
+      .hljs-doctag {
+        color: #6a9955;
+      }
+      .hljs-string,
+      .hljs-meta .hljs-string {
+        color: #ce9178;
+      }
+      .hljs-number {
+        color: #b5cea8;
+      }
+      .hljs-title,
+      .hljs-function,
+      .hljs-title.function_ {
+        color: #dcdcaa;
+      }
+      .hljs-title.class_,
+      .hljs-class {
+        color: #4ec9b0;
+      }
+      .hljs-variable,
+      .hljs-variable.language_,
+      .hljs-template-variable,
+      .hljs-property,
+      .hljs-params {
+        color: #9cdcfe;
+      }
+      .hljs-tag {
+        color: #808080;
+      }
+      .hljs-subst,
+      .hljs-formula {
+        color: #d4d4d4;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #d16969;
+      }
+      .hljs-meta {
+        color: #569cd6;
+      }
+      .tag-expected {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #4caf50;
+        margin-top: 0.6rem;
+      }
+      .tag-starter {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #2255cc;
+      }
+      .tag-challenge {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #b45309;
+      }
+      .task-list {
+        margin: 0.4rem 0 0;
+        padding-left: 1.2rem;
+      }
+      .task-list li {
+        margin-bottom: 0.35rem;
+      }
+      .task {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        border: 1px solid #e4e4e4;
+        border-radius: 10px;
+        padding: 1.1rem 1.25rem;
+        margin-bottom: 1.25rem;
+        background: #fff;
+      }
+      .task-num {
+        flex-shrink: 0;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        background: #2255cc;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .task-body {
+        flex: 1 1 260px;
+      }
+      .task-body p {
+        margin: 0;
+      }
+      .challenge {
+        border-color: #f0d5ad;
+        background: #fffaf0;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="home-nav">
+      <a href="/">← Week 1 Home</a>
+      ·
+      <a href="./lecture.html">Lecture</a>
+      ·
+      <a href="./notes.html">Notes</a>
+      ·
+      <a href="./practice.html">Practice</a>
+      ·
+      <a href="./concepts.html">Concepts</a>
+      ·
+      <strong>Lab</strong>
+    </p>
+    <h1>Day 3 — Lab</h1>
+
+    <div class="task challenge">
+      <span class="task-num">1</span>
+      <div class="task-body">
+        <p>Gym check-ins — rank every member below.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">const members = [
+  { name: "Ada", visits: 18 },
+  { name: "Grace", visits: 9 },
+  { name: "Linus", visits: 3 },
+];</code></pre>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Loop over <code>members</code>, destructuring <code>name</code> and <code>visits</code> from each one.</li>
+          <li>Ternary: <code>visits &gt;= 10</code> → <code>"Gold"</code>, else <code>"Standard"</code>.</li>
+          <li>Log one template-literal line per member, e.g. <code>"Ada: 18 visits (Gold)"</code>.</li>
+          <li>Shallow-copy <code>members</code>, push one more member onto <em>only</em> the copy, and confirm <code>members.length</code> didn't change.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">"Ada: 18 visits (Gold)"
+"Grace: 9 visits (Standard)"
+"Linus: 3 visits (Standard)"
+members.length     // 3
+membersCopy.length // 4</code></pre>
+      </div>
+    </div>
+
+    <div class="task challenge">
+      <span class="task-num">2</span>
+      <div class="task-body">
+        <p>Coffee order — total up the tab.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">const order = [
+  { drink: "Latte", price: 4.5, qty: 2 },
+  { drink: "Espresso", price: 2.5, qty: 1 },
+  { drink: "Cold Brew", price: 5, qty: 3 },
+];</code></pre>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Loop over <code>order</code>, destructuring <code>drink</code>, <code>price</code>, <code>qty</code> from each entry.</li>
+          <li>Log one line per drink, e.g. <code>"Latte x2 = $9"</code>.</li>
+          <li>Accumulate a running <code>total</code> across every entry.</li>
+          <li>Ternary: <code>total &gt; 20</code> → <code>"Loyalty point earned"</code>, else <code>"No point yet"</code>.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">"Latte x2 = $9"
+"Espresso x1 = $2.5"
+"Cold Brew x3 = $15"
+total // 26.5
+"Loyalty point earned"</code></pre>
+      </div>
+    </div>
+
+    <div class="task challenge">
+      <span class="task-num">3</span>
+      <div class="task-body">
+        <p>Sensor sweep — stop early, skip the dead readings.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">const readings = [12, 40, 0, 55, 91, 7];</code></pre>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Loop with a <code>for</code> loop. <code>continue</code> past any reading of <code>0</code>.</li>
+          <li><code>break</code> out entirely the moment you hit a reading above <code>90</code>.</li>
+          <li>Collect the readings you kept into an array and log it.</li>
+          <li>Predict, then check: <code>readings[2] == false</code> vs <code>readings[2] === false</code>. Write a comment explaining why they differ.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">kept // [12, 40, 55] — 0 skipped, everything from 91 on dropped</code></pre>
+      </div>
+    </div>
+
+    <div class="task challenge">
+      <span class="task-num">4</span>
+      <div class="task-body">
+        <p>User profile — missing keys and real copies.</p>
+        <span class="tag-starter">Starter</span>
+        <pre><code class="language-typescript">const profile = {
+  username: "ada",
+  plan: "pro",
+  settings: { theme: "dark", fontSize: 14 },
+}; // note: there is no "contact" key</code></pre>
+        <span class="tag-challenge">Challenge</span>
+        <ul class="task-list">
+          <li>Use optional chaining to read <code>profile.contact?.email</code> safely, falling back to <code>"no email on file"</code> with <code>??</code>.</li>
+          <li>Write a <code>switch</code> on <code>profile.plan</code>: <code>"pro"</code> → <code>"Pro plan"</code>, <code>"free"</code> → <code>"Free plan"</code>, default → <code>"Unknown plan"</code>.</li>
+          <li>Deep-clone <code>profile</code> with <code>structuredClone</code>, change the clone's <code>settings.theme</code>, and confirm the original's theme did <em>not</em> change.</li>
+          <li>Now shallow-copy with <code>{ ...profile }</code>, change <em>that</em> copy's <code>settings.theme</code>, and show the original <em>did</em> change. Explain the difference in one comment.</li>
+        </ul>
+        <span class="tag-expected">Expected</span>
+        <pre><code class="language-typescript">email                     // "no email on file"
+planLabel                 // "Pro plan"
+profile.settings.theme    // "dark" — after the structuredClone edit
+profile.settings.theme    // changed — after the spread-copy edit</code></pre>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      // highlight.js replaces each block's innerHTML, so the ✓/✗ line markers are
+      // re-applied afterwards from the block's data-mark attribute ("g1,b3,b4").
+      function splitHighlightedLines(html) {
+        const lines = [], open = [];
+        let current = "", i = 0;
+        while (i < html.length) {
+          const ch = html[i];
+          if (ch === "<") {
+            const end = html.indexOf(">", i);
+            const tag = html.slice(i, end + 1);
+            if (tag.startsWith("</")) open.pop();
+            else open.push(tag);
+            current += tag;
+            i = end + 1;
+          } else if (ch === "\n") {
+            lines.push(current + "</span>".repeat(open.length));
+            current = open.join("");
+            i += 1;
+          } else {
+            current += ch;
+            i += 1;
+          }
+        }
+        lines.push(current);
+        return lines;
+      }
+
+      document.querySelectorAll("pre code").forEach(function (el) {
+        hljs.highlightElement(el);
+        const mark = el.dataset.mark;
+        if (!mark) return;
+        const cls = {};
+        mark.split(",").forEach(function (m) {
+          cls[Number(m.slice(1))] = m[0] === "g" ? "line-good" : "line-bad";
+        });
+        el.innerHTML = splitHighlightedLines(el.innerHTML)
+          .map(function (line, i) {
+            return cls[i + 1] ? '<span class="' + cls[i + 1] + '">' + line + "</span>" : line;
+          })
+          .join("\n");
+      });
+    </script>
+  </body>
+</html>
