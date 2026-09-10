@@ -173,6 +173,73 @@ getBusiestNetwork(shows) // Bravo and Freeform both have 3 — decide what yours
         </div>
       </div>
 
+      <div className="task challenge">
+        <span className="task-num">7</span>
+        <div className="task-body">
+          <p>Closure: track package lookups without a global variable.</p>
+          <span className="tag-challenge">Challenge</span>
+          <ul className="task-list">
+            <li>Write <code>createLookupTracker()</code> — returns an object with <code>lookup(packageName)</code> and <code>getCounts()</code>.</li>
+            <li>Each call to <code>lookup</code> increments a count for that package name; <code>getCounts</code> returns the counts so far.</li>
+            <li>The count data must only be reachable through the returned functions — no variable holding it outside the closure.</li>
+          </ul>
+          <span className="tag-expected">Expected</span>
+          <CodeBlock code={`const tracker = createLookupTracker();
+tracker.lookup("Gold");
+tracker.lookup("Gold");
+tracker.lookup("Basic");
+tracker.getCounts() // { Gold: 2, Basic: 1 }`} language="typescript" />
+        </div>
+      </div>
+
+      <div className="task challenge">
+        <span className="task-num">8</span>
+        <div className="task-body">
+          <p>Callback: write your own iteration function.</p>
+          <span className="tag-challenge">Challenge</span>
+          <ul className="task-list">
+            <li>Write <code>forEachPackage(packages, callback)</code> — calls <code>callback(pkg, index)</code> once per package. Don't call <code>.forEach()</code> under the hood — write the loop yourself.</li>
+            <li>Use it to log every package's name and price.</li>
+          </ul>
+          <span className="tag-expected">Expected</span>
+          <CodeBlock code={`forEachPackage(packages, (pkg, i) => console.log(\`\${i}: \${pkg.name} — $\${pkg.price}\`));
+// 0: Basic — $9.9
+// 1: Gold — $37.9
+// 2: Select — $17.9
+// 3: Silver — $27.9`} language="typescript" />
+        </div>
+      </div>
+
+      <div className="task challenge">
+        <span className="task-num">9</span>
+        <div className="task-body">
+          <p>Rest parameters: merge networks from any number of packages.</p>
+          <span className="tag-challenge">Challenge</span>
+          <ul className="task-list">
+            <li>Write <code>mergeNetworks(...packageNames)</code> — looks each name up in <code>packages</code> and returns the deduplicated union of their <code>networks</code>.</li>
+            <li>It should work for two package names or five — that's what the rest parameter buys you.</li>
+          </ul>
+          <span className="tag-expected">Expected</span>
+          <CodeBlock code={`mergeNetworks("Basic", "Select")
+// ["CBS", "CW", "ABC", "NBC", "BET", "Freeform", "Nickelodeon", "Bravo"]`} language="typescript" />
+        </div>
+      </div>
+
+      <div className="task challenge">
+        <span className="task-num">10</span>
+        <div className="task-body">
+          <p>Sort: rank packages from cheapest to priciest.</p>
+          <span className="tag-challenge">Challenge</span>
+          <ul className="task-list">
+            <li>Write <code>getPackagesSortedByPrice()</code> — returns package names ordered from cheapest to most expensive.</li>
+            <li>Sort a copy of <code>packages</code> — the original array's order shouldn't change.</li>
+          </ul>
+          <span className="tag-expected">Expected</span>
+          <CodeBlock code={`getPackagesSortedByPrice()
+// ["Basic", "Select", "Silver", "Gold"]`} language="typescript" />
+        </div>
+      </div>
+
 
 
     </div>
