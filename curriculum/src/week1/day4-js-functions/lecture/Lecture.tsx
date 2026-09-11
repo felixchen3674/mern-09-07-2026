@@ -1,5 +1,5 @@
 import DayNav from "../../../components/DayNav";
-import "./demo";
+// import "./demo";
 
 export default function Lecture() {
   return (

@@ -49,6 +49,12 @@ export const WEEKS: Week[] = [
         title: "JS Functions",
         pages: ALL,
       },
+      {
+        slug: "day5-promises-apis",
+        number: 5,
+        title: "Promises & APIs",
+        pages: ALL,
+      },
     ],
   },
 ];

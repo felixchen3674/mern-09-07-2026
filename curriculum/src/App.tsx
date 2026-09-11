@@ -28,6 +28,12 @@ import D4Practice from "./week1/day4-js-functions/Practice";
 import D4Concepts from "./week1/day4-js-functions/Concepts";
 import D4Lab from "./week1/day4-js-functions/Lab";
 
+import D5Lecture from "./week1/day5-promises-apis/lecture/Lecture";
+import D5Notes from "./week1/day5-promises-apis/Notes";
+import D5Practice from "./week1/day5-promises-apis/Practice";
+import D5Concepts from "./week1/day5-promises-apis/Concepts";
+import D5Lab from "./week1/day5-promises-apis/Lab";
+
 function App() {
   return (
     <Routes>
@@ -56,6 +62,12 @@ function App() {
       <Route path="/week1/day4-js-functions/practice" element={<D4Practice />} />
       <Route path="/week1/day4-js-functions/concepts" element={<D4Concepts />} />
       <Route path="/week1/day4-js-functions/lab" element={<D4Lab />} />
+
+      <Route path="/week1/day5-promises-apis/lecture" element={<D5Lecture />} />
+      <Route path="/week1/day5-promises-apis/notes" element={<D5Notes />} />
+      <Route path="/week1/day5-promises-apis/practice" element={<D5Practice />} />
+      <Route path="/week1/day5-promises-apis/concepts" element={<D5Concepts />} />
+      <Route path="/week1/day5-promises-apis/lab" element={<D5Lab />} />
 
 
 
