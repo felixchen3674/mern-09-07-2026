@@ -711,7 +711,7 @@ git tag v1.4.0                         # tag it, then send it through the pipeli
           <T x={558} y={58} anchor="start" size={10}>instant rollback</T>
         </svg>
         <p>
-          <En><strong>Canary:</strong> send a small slice of real traffic (say 5%) to the new version, watch the errors, then widen. Rollback: route the 5% back. Cost: needs good monitoring to judge &quot;is it healthy?&quot;</En>
+          <En><strong>Canary release:</strong> send a small slice of real traffic (say 5%) to the new version, watch the errors, then widen. Rollback: route the 5% back. Cost: needs good monitoring to judge &quot;is it healthy?&quot;</En>
           <Zh><strong>Canary：</strong>先把一小部分真实流量（比如 5%）导给新版本，观察错误，再逐步扩大。回滚：把那 5% 切回去。代价：需要完善的监控来判断&quot;是否健康&quot;。</Zh>
         </p>
         <svg viewBox="0 0 680 134" role="img" aria-label="Canary deployment. Users send traffic to a load balancer. 95 percent goes to the current version 1.3 and 5 percent goes to the new version 1.4, the canary. If the canary is healthy, widen it; if not, route its traffic back.">
