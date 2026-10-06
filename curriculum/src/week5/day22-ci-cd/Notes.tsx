@@ -807,7 +807,7 @@ git tag v1.4.0                         # tag it, then send it through the pipeli
           <En>9. The whole journey in one picture</En>
           <Zh>9. 一张图看完整个旅程</Zh>
         </h3>
-        <svg viewBox="0 0 680 235" role="img" aria-label="The full path from idea to production. Top row: a Jira ticket, a feature branch and pull request, CI checks, code review and merge, then build and push the image. Bottom row: a temporary dev environment per pull request, QA testing after merge, staging with UAT, production after a tagged release and approval, then monitoring. If monitoring raises an alert, a rollback arrow goes back to the previous version in production.">
+        <svg viewBox="0 0 680 235" role="img" aria-label="The full path from idea to production. Top row: a Jira ticket, a feature branch and pull request, CI checks, code review and merge, then build and push the image from main. Once the CI checks pass on the pull request, the feature branch is deployed to a temporary dev environment. After review and approval, merging deletes that temporary dev environment and deploys the main branch to QA. Bottom row: the temporary dev environment, QA, staging with UAT, production after a tagged release and approval, then monitoring. If monitoring raises an alert, a rollback arrow goes back to the previous version in production.">
           <Box x={30} y={24} w={108} h={50} kind="muted" label="Ticket" sub="Jira story" />
           <Box x={158} y={24} w={108} h={50} label="Branch + PR" sub="ORD-123" />
           <Box x={286} y={24} w={108} h={50} label="CI checks" sub="lint · test · scan" />
@@ -817,9 +817,12 @@ git tag v1.4.0                         # tag it, then send it through the pipeli
           <Arrow d="M266,49 L284,49" />
           <Arrow d="M394,49 L412,49" />
           <Arrow d="M522,49 L540,49" />
-          <Arrow d="M596,74 L596,98 L84,98 L84,126" />
-          <Box x={30} y={128} w={108} h={50} label="dev" sub="temp env per PR" />
-          <Box x={158} y={128} w={108} h={50} label="QA" sub="E2E · on merge" />
+          <Arrow d="M340,74 L340,88 L84,88 L84,126" />
+          <T x={212} y={84}>CI passes → deploy branch</T>
+          <Arrow d="M596,74 L596,108 L212,108 L212,126" />
+          <T x={404} y={102} color="#c0392b">merged → delete dev, deploy main to QA</T>
+          <Box x={30} y={128} w={108} h={50} kind="warn" dashed label="dev" sub="temp · per PR" />
+          <Box x={158} y={128} w={108} h={50} label="QA" sub="main · E2E" />
           <Box x={286} y={128} w={108} h={50} label="staging" sub="UAT · approval" />
           <Box x={414} y={128} w={108} h={50} kind="primary" label="prod" sub="tag · zero downtime" />
           <Box x={542} y={128} w={108} h={50} kind="ok" label="Monitor" sub="alerts · on-call" />
