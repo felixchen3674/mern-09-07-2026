@@ -1,0 +1,323 @@
+/* Shared look for every page in the marketing site. One stylesheet, scoped per page type
+   (.home-page, .skill-page), mirroring how curriculum/src/styles/curriculum.css is organised. */
+
+.page {
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+  line-height: 1.6;
+  color: #1c1c1c;
+}
+
+.intro {
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.92rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* nav bar                                                              */
+/* ------------------------------------------------------------------ */
+.site-nav {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 100;
+  margin: 0 0 1.25rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #cfd6e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(28, 28, 28, 0.08);
+}
+.site-nav-sep {
+  margin: 0 0.4rem;
+  color: #999;
+}
+
+/* ------------------------------------------------------------------ */
+/* home page                                                            */
+/* ------------------------------------------------------------------ */
+.home-page {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 0 1.5rem 3rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+.home-page h1 {
+  font-size: 1.4rem;
+}
+.home-page h2 {
+  font-size: 1.05rem;
+  margin: 2.5rem 0 0.25rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+.home-page ul {
+  padding-left: 1.2rem;
+}
+.home-page li {
+  margin-bottom: 0.6rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* skill-section builder                                                */
+/* ------------------------------------------------------------------ */
+.skill-page h1 {
+  font-size: 1.6rem;
+  margin-top: 0;
+}
+.skill-page h2 {
+  font-size: 1.15rem;
+  margin: 2.5rem 0 0.4rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
+.how-to {
+  background: #f6f8fc;
+  border: 1px solid #dfe5f0;
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem 0.9rem 2.2rem;
+  margin: 0 0 1rem;
+}
+.how-to li {
+  margin: 0.25rem 0;
+}
+
+/* layout picker */
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.layout-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #cfd6e1;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  background: #fff;
+}
+.layout-card:hover {
+  border-color: #2255cc;
+}
+.layout-card.selected {
+  border-color: #2255cc;
+  background: #f0f4fe;
+  box-shadow: 0 0 0 1px #2255cc;
+}
+.layout-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.layout-card:has(input:focus-visible) {
+  outline: 2px solid #2255cc;
+  outline-offset: 2px;
+}
+.layout-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.layout-desc {
+  color: #555;
+}
+.badge {
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: #2255cc;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.layout-cats {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  color: #333;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.example {
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid #2255cc;
+  background: #f6f8fc;
+  font-size: 0.92rem;
+}
+
+/* form fields */
+.field {
+  margin: 1rem 0;
+}
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.field input[type="text"],
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c0c8d4;
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+}
+.field textarea {
+  resize: vertical;
+}
+/* choice cards: one row of small cards, the selected one highlighted, the rest grayed */
+.choice {
+  border: 0;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+.choice legend {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 0.4rem;
+}
+.choice-row {
+  display: flex;
+  gap: 0.6rem;
+}
+.choice-card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d5d9e0;
+  border-radius: 8px;
+  background: #f4f5f7;
+  color: #8a909b;
+  cursor: pointer;
+}
+.choice-card:hover {
+  border-color: #9fb3e6;
+  color: #555;
+}
+.choice-card.selected {
+  border-color: #2255cc;
+  background: #f0f4fe;
+  box-shadow: 0 0 0 1px #2255cc;
+  color: #1c1c1c;
+}
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.choice-card:has(input:focus-visible) {
+  outline: 2px solid #2255cc;
+  outline-offset: 2px;
+}
+.choice-title {
+  font-weight: 600;
+}
+.choice-hint {
+  font-size: 0.85rem;
+}
+
+.hint {
+  margin: 0.3rem 0 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* buttons */
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid #2255cc;
+  border-radius: 6px;
+  background: #fff;
+  color: #2255cc;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #f0f4fe;
+}
+.btn.primary {
+  background: #2255cc;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+}
+.btn.primary:hover {
+  background: #1a44a8;
+}
+
+/* generated prompt */
+.prompt-output {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #cfd6e1;
+  border-radius: 8px;
+  background: #fafbfd;
+}
+.prompt-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.prompt-bar h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.prompt-text {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #c0c8d4;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  background: #fff;
+  resize: vertical;
+}
+.notice {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  background: #fff6e0;
+  border: 1px solid #f0d58a;
+  border-radius: 6px;
+  font-size: 0.88rem;
+}
+
+/* keyword bank reference */
+.bank summary {
+  cursor: pointer;
+  color: #2255cc;
+  font-weight: 600;
+}
+.bucket {
+  margin: 0.9rem 0;
+  font-size: 0.88rem;
+}
+.bucket p {
+  margin: 0.2rem 0 0;
+  color: #444;
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 1.25rem 1rem 4rem;
+  }
+}
