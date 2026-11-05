@@ -224,7 +224,7 @@ export default function Concepts() {
                 <strong>Blue/green:</strong> run a full second copy, test it, then flip all traffic over — flipping back is an instant rollback.
               </li>
               <li>
-                <strong>Canary:</strong> send a small slice of real traffic (say 5%) to the new version first, watch the errors, then widen.
+                <strong>Canary release:</strong> send a small slice of real traffic (say 5%) to the new version first, watch the errors, then widen.
               </li>
             </ul>
           </div>

@@ -45,7 +45,7 @@ export function Cart() {
 
   return (
     <main style={{ fontFamily: "system-ui", maxWidth: 420, margin: "2rem auto" }}>
-      <h1>Shop Hello World 2</h1>
+      <h1>Shop Cart New Feature</h1>
       {loading && <p>Loading products…</p>}
       <ul style={{ listStyle: "none", padding: 0 }}>
         {items.map((item) => (
